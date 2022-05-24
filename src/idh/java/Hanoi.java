@@ -108,6 +108,23 @@ public class Hanoi {
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
 		// TODO: Implement me!
+
+		if (numberOfPieces == 1) {
+			// base case
+			System.out.println(this);
+			movePiece(from, to);
+		} else {
+			// recursion step
+			
+			// move n-1 pieces to an auxiliary stick
+			movePieces(numberOfPieces-1, from, util, to);
+			System.out.println(this);
+			// move 1 piece from source to target stick
+			movePiece(from, to);
+			
+			// move n-1 pieces from auxiliary stick to target stick
+			movePieces(numberOfPieces-1, util, to, from);
+		}
 	}
 	
 	

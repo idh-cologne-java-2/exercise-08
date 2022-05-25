@@ -18,19 +18,30 @@ public class Hanoi {
 		}
 	}
 	
-	private void movePiece(char from, char to) {
-		Integer piece = null;
+	private void movePiece(char from, char to) throws IllegalMoveException {
+		Deque<Integer> fromDeque = null;
+		Deque<Integer> toDeque = null;
 		switch(from) {
-		case 'l': piece = left.remove(); break;
-		case 'm': piece = middle.remove(); break;
-		case 'r': piece = right.remove(); break;
+		case 'l': fromDeque = left; break;
+		case 'm': fromDeque = middle; break;
+		case 'r': fromDeque = right; break;
 		}
 		
 		switch(to) {
-		case 'l': left.addFirst(piece); break;
-		case 'm': middle.addFirst(piece); break;
-		case 'r': right.addFirst(piece); break;
+		case 'l': toDeque = left; break;
+		case 'm': toDeque = middle; break;
+		case 'r': toDeque = right; break;
 		}
+		
+		if (fromDeque.isEmpty()) throw new IllegalMoveException();
+		if (toDeque.isEmpty()) {
+			toDeque.addFirst(fromDeque.remove());
+			return;
+		}
+		if (fromDeque.getLast() > toDeque.getLast()) {
+			throw new IllegalMoveException();
+		}
+		toDeque.addFirst(fromDeque.remove());
 	}
 	
 	public void run() {
@@ -107,7 +118,33 @@ public class Hanoi {
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		// TODO: Implement me!
+		Deque<Integer> toDeque = null;
+		switch(to) {
+		case 'l': toDeque = left; break;
+		case 'm': toDeque = middle; break;
+		case 'r': toDeque = right; break;
+		}
+		int originalSize = toDeque.size();
+		char lastFrom = 0;
+		char lastTo = 0;
+		char[][] combos = {{'l','m'},{'l','r'},{'m','l'},{'m','r'},{'r','l'},{'r','m'}};
+		while (true) {
+			for (char[] combo : combos) {
+				System.out.println(String.valueOf(combo));
+				try {
+					if (!(combo[0] == lastTo && combo[1] == lastFrom)) {
+						this.movePiece(combo[0], combo[1]);
+					}
+					break;
+				} catch (IllegalMoveException e) {
+					
+				}
+			}
+			System.out.println(this);
+			if (toDeque.size() == originalSize + numberOfPieces) {
+				return;
+			}
+		}
 	}
 	
 	

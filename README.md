@@ -18,13 +18,26 @@ In der Methode `runAutomatically()` finden Sie bereit eine Implementierung, die 
 
 Es macht das Leben leichter, sich den aktuellen Zustand der Türme anschauen zu können. Sie können dazu jederzeit die Zeile `System.out.println(this);` einfügen, um die "ASCII-Art"-Repräsentation der Türme zu sehen.
 
-
 Hinweise:
 
 - Für das verschieben einer einzelnen Scheibe sollte ausschließlich die Methode `movePiece(from, to)` verwendet werden. 
 
 - Jeder einzelne Schritt sollte natürlich legal sein, d.h. den Anforderungen an das Spiel genügen.
 
+
+## Aufgabe 2
+
+In der Sitzung haben wir über die Datenstruktur `Tree` geredet, und eine Implementierung der sog. Tiefensuche ("depth-first search") vorgenommen, die einfach jeden Inhalt des Baumes ausgibt. Sie finden den Code dazu in der Klasse `idh.java.Tree`, die Methode `dfs()` implementiert die Tiefensuche. Verändern Sie die Implementierung der Methode so, dass die Ausgabe nicht "flach" in der Konsole erscheint, sondern die Baumstruktur durch Einrückung wiedergibt.
+
+Der Fahrzeugbaum aus der Sitzung z.B. sollte dann so aussehen:
+
+```
+wheeled vehicle
+  bike
+    tandem
+    e-bike
+  buggy
+```
 
 ----
 

@@ -7,6 +7,7 @@ import java.util.Set;
 public class Tree<T>  {
 
 	T value;
+
 	Set<Tree<T>> children;
 	
 	public Tree(T value) {

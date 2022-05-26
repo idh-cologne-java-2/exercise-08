@@ -1,3 +1,4 @@
+// Tim Schäfer 7380391
 package idh.java;
 
 import java.io.BufferedReader;
@@ -13,7 +14,7 @@ public class Hanoi {
 	Deque<Integer> right = new LinkedList<Integer>();
 	
 	public Hanoi() {
-		for (int i = 3; i < 10; i++) {
+		for (int i = 1; i < 6; i++) {
 			left.addLast(i);
 		}
 	}
@@ -107,7 +108,16 @@ public class Hanoi {
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		// TODO: Implement me!
+		
+		if(numberOfPieces == 0) return;
+		
+		movePieces(numberOfPieces-1, from, util, to);
+		
+		movePiece(from, to);
+		System.out.println(this);
+		
+		movePieces(numberOfPieces - 1, util, to, from);
+		
 	}
 	
 	

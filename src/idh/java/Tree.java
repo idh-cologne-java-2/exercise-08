@@ -1,3 +1,4 @@
+// Tim Schäfer 7380391
 package idh.java;
 
 import java.util.Collection;
@@ -31,11 +32,36 @@ public class Tree<T>  {
 		return children;
 	}
 	
+/*
+ * Nicht so performant (aber simpel)
+ * 
+	public void dfs(String leerzeichen) {
 	
-	public void dfs() {
-		System.out.println(this.value);
+		System.out.println(leerzeichen +  this.value);
+		
+		leerzeichen += "  ";
 		for (Tree<T> child : children) {
-			child.dfs();
+			child.dfs(leerzeichen);
+		}
+	}
+*/
+	
+// performantere Lösung dank Stringbuilder
+	
+	public void dfs(int zaehler) {
+		
+		StringBuilder ausgabeString = new StringBuilder();
+		
+		for(int i = 0;i<zaehler;i++) {
+			ausgabeString.append("  ");
+		}
+		
+		ausgabeString.append(this.value);
+		
+		System.out.println(ausgabeString);
+		
+		for (Tree<T> child : children) {
+			child.dfs(zaehler + 1);
 		}
 	}
 	
@@ -53,7 +79,8 @@ public class Tree<T>  {
 		bike.children().add(tandem);
 		bike.children().add(ebike);
 		
-		wheeled_vehicle.dfs();
+		//wheeled_vehicle.dfs("");
+		wheeled_vehicle.dfs(0);
 	}
 
 }

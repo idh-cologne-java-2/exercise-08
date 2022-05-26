@@ -13,7 +13,6 @@ public class Tree<T>  {
 		this.value = value;
 		this.children = new HashSet<>();
 	}
-	
 	public Tree(T value, Collection<Tree<T>> children) {
 		this.value = value;
 		this.children = new HashSet<>(children);

@@ -17,8 +17,6 @@ public class Hanoi {
             leftStack.push(i--);
         }
     }
-
-
     private void movePiece(char from, char to) {
 
         Stack<Integer> source;

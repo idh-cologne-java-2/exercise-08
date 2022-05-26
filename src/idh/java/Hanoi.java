@@ -107,7 +107,33 @@ public class Hanoi {
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		// TODO: Implement me!
+		// TODO: Implemented.
+		
+		//System.out.println(numberOfPieces);
+		//System.out.println(this);
+		if(numberOfPieces == 1) {
+			movePiece(from,to);
+		}else {
+			
+			movePieces(numberOfPieces-1,from, util, to);
+			//System.out.println(this);
+			movePiece(from,to);
+			movePieces(numberOfPieces-1,util, to, from);	
+			
+			//ablauf etwa
+//			//a (3)
+//			movePiece(from,to);
+//			movePiece(from,util);
+//			movePiece(to, util);
+//			//b
+//			movePiece(from,to);
+//			//c
+//			movePiece(util,from);
+//			movePiece(util, to);
+//			movePiece(from,to);
+
+		
+		}
 	}
 	
 	

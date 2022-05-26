@@ -31,11 +31,23 @@ public class Tree<T>  {
 		return children;
 	}
 	
-	
-	public void dfs() {
+	public void dfs(int index) {
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
-			child.dfs();
+			System.out.print(" ");
+			if(child.children().isEmpty()) { //für diese art von ausgabe ist buggy so wie die anderen leafs
+				System.out.print(" ");
+			}
+			//System.out.print(index);
+			child.dfs(index++);
+		}
+	}
+	
+	public void dfs2(int index) {
+		System.out.println(this.value);
+		for (Tree<T> child : children) {
+			System.out.print(" ");
+			child.dfs(index++);
 		}
 	}
 	
@@ -48,12 +60,16 @@ public class Tree<T>  {
 		Tree<String> buggy = new Tree<String>("buggy");
 		Tree<String> wheeled_vehicle = new Tree<String>("wheeled vehicle");
 
+		//wheeled_vehicle.children().add(buggy);
 		wheeled_vehicle.children().add(bike);
 		wheeled_vehicle.children().add(buggy);
 		bike.children().add(tandem);
 		bike.children().add(ebike);
 		
-		wheeled_vehicle.dfs();
+		//wheeled_vehicle.dfs(1);
+		
+		//System.out.println();
+		wheeled_vehicle.dfs2(1); //root einzeln, rest rekursiv
 	}
 
 }

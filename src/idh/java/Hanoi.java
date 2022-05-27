@@ -44,6 +44,7 @@ public class Hanoi {
 					char source = s.charAt(0);
 					char target = s.charAt(1);
 					movePiece(source, target);
+					
 				}
 			} catch (Exception e) {
 				System.out.println("Try again, something's not right.");
@@ -89,11 +90,6 @@ public class Hanoi {
 		return b.toString();
 	}
 	
-	public static void main(String[] args) {
-		Hanoi hanoi = new Hanoi();
-		// hanoi.run();
-		hanoi.runAutomatically();
-	}
 
 	private void runAutomatically() {
 		// we print out the initial situation
@@ -107,7 +103,33 @@ public class Hanoi {
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		// TODO: Implement me!
+ // TODO: Implement me!
+	if(numberOfPieces == 0 ) {
+		return ; 
+	}
+	
+	movePieces(numberOfPieces -1, from , util, to ); 
+	
+	movePiece(from, to);
+	System.out.println(this);
+
+	System.out.println(" bewege " + numberOfPieces + " scheiben von " + from + " nach " + to ); 
+	
+	movePieces(numberOfPieces - 1, util, to, from); 
+	
+	
+	
+	
+	
+		
+		
+	}
+	
+
+	public static void main(String[] args) {
+		Hanoi hanoi = new Hanoi();
+		// hanoi.run();
+		hanoi.runAutomatically();
 	}
 	
 	

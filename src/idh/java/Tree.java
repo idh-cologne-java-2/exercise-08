@@ -7,16 +7,19 @@ import java.util.Set;
 public class Tree<T>  {
 
 	T value;
+	private int depth;
 	Set<Tree<T>> children;
 	
 	public Tree(T value) {
 		this.value = value;
-		this.children = new HashSet<Tree<T>>();
+		this.depth = 0;
+		this.children = new ChildSet<Tree<T>>(this.depth);
 	}
 	
 	public Tree(T value, Collection<Tree<T>> children) {
 		this.value = value;
-		this.children = new HashSet<Tree<T>>(children);
+		this.depth = 0;
+		this.children = new ChildSet<Tree<T>>(children, this.depth);
 	}
 		
 	public T get() {
@@ -31,9 +34,18 @@ public class Tree<T>  {
 		return children;
 	}
 	
+	public void setDepth(int newDepth) {
+		this.depth = newDepth;
+	}
+	
 	
 	public void dfs() {
-		System.out.println(this.value);
+		String addedSpaces = new String();
+		for (int i = 0; i < this.depth; i++) {
+			addedSpaces.concat(" ");
+		}
+		System.out.println(addedSpaces + this.value);
+		System.out.println(this.depth);
 		for (Tree<T> child : children) {
 			child.dfs();
 		}

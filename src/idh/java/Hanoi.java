@@ -118,33 +118,23 @@ public class Hanoi {
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		Deque<Integer> toDeque = null;
-		switch(to) {
-		case 'l': toDeque = left; break;
-		case 'm': toDeque = middle; break;
-		case 'r': toDeque = right; break;
-		}
-		int originalSize = toDeque.size();
-		char lastFrom = 0;
-		char lastTo = 0;
-		char[][] combos = {{'l','m'},{'l','r'},{'m','l'},{'m','r'},{'r','l'},{'r','m'}};
-		while (true) {
-			for (char[] combo : combos) {
-				System.out.println(String.valueOf(combo));
-				try {
-					if (!(combo[0] == lastTo && combo[1] == lastFrom)) {
-						this.movePiece(combo[0], combo[1]);
-					}
-					break;
-				} catch (IllegalMoveException e) {
-					
-				}
-			}
-			System.out.println(this);
-			if (toDeque.size() == originalSize + numberOfPieces) {
+		if (numberOfPieces == 1) {
+			try {
+				movePiece(from,to);
 				return;
+			} catch (IllegalMoveException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
+		movePieces(numberOfPieces-1,from,util,to);
+		try {
+			movePiece(from,to);
+		} catch (IllegalMoveException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		movePieces(numberOfPieces-1,util,from,to);
 	}
 	
 	

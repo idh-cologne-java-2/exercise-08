@@ -29,8 +29,13 @@ public class ChildSet<T> extends HashSet<T> {
 		this.depth = depth;
 	}
 	 
-	public boolean add(Tree<T> t) {
+	public boolean add(T t) {
 		if (!super.add(t)) return false;
-		t.setDepth(this.depth+1);
+		try {
+			((Tree<T>) t).setDepth(this.depth+1);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

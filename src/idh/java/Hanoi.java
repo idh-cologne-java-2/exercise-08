@@ -38,7 +38,7 @@ public class Hanoi {
 			toDeque.addFirst(fromDeque.remove());
 			return;
 		}
-		if (fromDeque.getLast() > toDeque.getLast()) {
+		if (fromDeque.getFirst() > toDeque.getFirst()) {
 			throw new IllegalMoveException();
 		}
 		toDeque.addFirst(fromDeque.remove());
@@ -102,17 +102,20 @@ public class Hanoi {
 	
 	public static void main(String[] args) {
 		Hanoi hanoi = new Hanoi();
-		// hanoi.run();
+//		hanoi.run();
 		hanoi.runAutomatically();
 	}
 
 	private void runAutomatically() {
+		System.out.println("before");
 		// we print out the initial situation
 		System.out.println(this);
+		System.out.println();
 
 		// this is the entry point into the recursion
 		movePieces(left.size(), 'l', 'r', 'm');
 		
+		System.out.println("after");
 		// and in the end, we check that everything has been moved
 		System.out.println(this);
 	}
@@ -134,9 +137,6 @@ public class Hanoi {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		movePieces(numberOfPieces-1,util,from,to);
+		movePieces(numberOfPieces-1,util,to,from);
 	}
-	
-	
-
 }

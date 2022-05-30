@@ -100,14 +100,21 @@ public class Hanoi {
 		System.out.println(this);
 
 		// this is the entry point into the recursion
-		movePieces(left.size(), 'l', 'r', 'm');
+		movePieces(left.size(), 'l', 'm', 'r');
 		
 		// and in the end, we check that everything has been moved
 		System.out.println(this);
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		// TODO: Implement me!
+		if(numberOfPieces > 0) {
+			movePieces(numberOfPieces-1, from, util, to);
+			movePiece(from, to);
+			movePieces(numberOfPieces-1, util, to, from);
+		}
+		else {
+			return;
+		}
 	}
 	
 	

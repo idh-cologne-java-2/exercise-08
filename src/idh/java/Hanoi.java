@@ -100,14 +100,33 @@ public class Hanoi {
 		System.out.println(this);
 
 		// this is the entry point into the recursion
+		//wie viele Scheiben sollen verlegt werden, von wo verlegt werden, nach wo und was ist der Zwischenspeicher-Stab
 		movePieces(left.size(), 'l', 'r', 'm');
 		
 		// and in the end, we check that everything has been moved
 		System.out.println(this);
 	}
 	
+	//Rekursiv lösen
+	//nur kleine Scheibe auf größerer Scheibe! Kann auch 1 auf 9 liegen, Abstand egal
+	//in jedem Zug nur eine Scheibe
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
 		// TODO: Implement me!
+		//wenn die Scheibe nicht 0 ist dann mache..
+		if (numberOfPieces != 0) {	
+			
+			//bewege die bestimmte Scheibe (n) - 1 vom Stapel from nach util
+			movePieces(numberOfPieces - 1, from, util, to);
+			//verschiebe die einzelne Scheibe
+			movePiece(from, to);
+			System.out.println(this);
+			movePieces(numberOfPieces - 1, util, to, from);
+						
+		} else {
+			
+			return;
+		}
+
 	}
 	
 	

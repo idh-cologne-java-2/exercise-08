@@ -32,10 +32,15 @@ public class Tree<T>  {
 	}
 	
 	
-	public void dfs() {
+	// TODO: Implement
+	public void dfs(int counter) {
+		for (int i = 0; i < counter; i++) {
+			System.out.println(" "); // Ausgabe Leerzeichen
+		}
+		
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
-			child.dfs();
+			child.dfs(counter + 1); // counter wird um 1 erhöht
 		}
 	}
 	
@@ -53,7 +58,7 @@ public class Tree<T>  {
 		bike.children().add(tandem);
 		bike.children().add(ebike);
 		
-		wheeled_vehicle.dfs();
+		wheeled_vehicle.dfs(0); // Methodenparameter = 0
 	}
 
 }

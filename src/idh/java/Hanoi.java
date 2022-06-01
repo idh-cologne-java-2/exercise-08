@@ -107,7 +107,13 @@ public class Hanoi {
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		// TODO: Implement me!
+		if(numberOfPieces > 0) {
+			movePieces(numberOfPieces-1, from, util, to);
+			movePiece(from, to);
+			movePieces(numberOfPieces-1, util, to, from);
+		} else {
+			return;
+		}
 	}
 	
 	

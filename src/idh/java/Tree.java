@@ -36,10 +36,6 @@ public class Tree<T>  {
 		return children;
 	}
 	
-	public boolean hasParent() {
-		this.children().isEmpty();
-		return true;
-	}
 
 
 
@@ -47,11 +43,10 @@ public class Tree<T>  {
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
 			System.out.print("\t");
-			//check if child is leaf node, that is if child has children
+//			check if child is leaf node, that is if child has children
 			if(!child.children().isEmpty()) { 
 				System.out.println("\t");
 			}
-			System.out.print(" ");
 		
 			child.dfs(i++);
 		}

@@ -8,6 +8,7 @@ public class Tree<T>  {
 
 	T value;
 	Set<Tree<T>> children;
+
 	
 	public Tree(T value) {
 		this.value = value;
@@ -31,11 +32,28 @@ public class Tree<T>  {
 		return children;
 	}
 	
+	public Set<Tree<T>> getChildren() {
+		return children;
+	}
 	
-	public void dfs() {
+	public boolean hasParent() {
+		this.children().isEmpty();
+		return true;
+	}
+
+
+
+	public void dfs(int i) {
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
-			child.dfs();
+			System.out.print("\t");
+			//check if child is leaf node, that is if child has children
+			if(!child.children().isEmpty()) { 
+				System.out.println("\t");
+			}
+			System.out.print(" ");
+		
+			child.dfs(i++);
 		}
 	}
 	
@@ -53,7 +71,7 @@ public class Tree<T>  {
 		bike.children().add(tandem);
 		bike.children().add(ebike);
 		
-		wheeled_vehicle.dfs();
+		wheeled_vehicle.dfs(0);
 	}
 
 }

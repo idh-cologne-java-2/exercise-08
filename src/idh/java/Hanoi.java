@@ -103,11 +103,23 @@ public class Hanoi {
 		movePieces(left.size(), 'l', 'r', 'm');
 		
 		// and in the end, we check that everything has been moved
-		System.out.println(this);
+//		System.out.println(this);
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		// TODO: Implement me!
+//		 TODO: Implement me!
+		int n = numberOfPieces;
+
+		if(n==1) {
+			movePiece(from, to);
+		}
+		if(n > 1) {
+			movePieces(n-1, from, util, to); 			
+			movePiece(from, to);
+			movePieces(n-1, util, to, from);
+		} 
+		System.out.println(this); 
+
 	}
 	
 	

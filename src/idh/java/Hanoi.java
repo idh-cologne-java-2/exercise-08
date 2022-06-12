@@ -107,7 +107,24 @@ public class Hanoi {
 	}
 	
 	private void movePieces(int numberOfPieces, char from, char to, char util) {
-		// TODO: Implement me!
+		
+		int i = 0;
+		
+		if(numberOfPieces == i) 	
+		{
+			return;
+		}
+		
+		numberOfPieces = numberOfPieces-1;
+		
+		movePieces(numberOfPieces, from, util, to);
+		
+		movePiece(from, to);
+		
+		System.out.println(this);
+		
+		movePieces(numberOfPieces, util, to, from);
+		
 	}
 	
 	

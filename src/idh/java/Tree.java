@@ -35,7 +35,7 @@ public class Tree<T>  {
 	public void dfs(int i) {
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
-			System.out.println(" ");
+			System.out.print(" ");
 			child.dfs(i++);
 		}
 	}

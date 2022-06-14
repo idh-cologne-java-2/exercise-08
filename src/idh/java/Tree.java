@@ -7,7 +7,7 @@ import java.util.Set;
 public class Tree<T>  {
 
 	T value;
-	Set<Tree<T>> children;
+	HashSet<Tree<T>> children;
 	
 	public Tree(T value) {
 		this.value = value;
@@ -31,11 +31,17 @@ public class Tree<T>  {
 		return children;
 	}
 	
+	public void dfs(int depthSearch) {
 	
-	public void dfs() {
+	
+	for (int i=0; i<depthSearch; i++) {
+		System.out.print(" ");
+			
+		}
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
-			child.dfs();
+			child.dfs(depthSearch+q);
+		
 		}
 	}
 	
@@ -53,7 +59,7 @@ public class Tree<T>  {
 		bike.children().add(tandem);
 		bike.children().add(ebike);
 		
-		wheeled_vehicle.dfs();
+		wheeled_vehicle.dfs(0);
 	}
 
 }

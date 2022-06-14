@@ -31,11 +31,16 @@ public class Tree<T>  {
 		return children;
 	}
 	
-	
 	public void dfs() {
-		System.out.println(this.value);
-		for (Tree<T> child : children) {
-			child.dfs();
+		dfs(0);
+	}
+	
+	public void dfs(int list) {
+		for(int i = 0; i < list; i++) {
+			System.out.println(" ");}
+			System.out.println(this.value);
+			for (Tree<T> child : children) {
+				child.dfs(list + 1);
 		}
 	}
 	

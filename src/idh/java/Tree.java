@@ -33,9 +33,14 @@ public class Tree<T>  {
 	
 	
 	public void dfs() {
+		dfs(0);
+	}
+	public void dfs(int leer) {
+		for (int i = 0; i < leer; i++) 
+			System.out.print(' ');
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
-			child.dfs();
+			child.dfs(leer+1);
 		}
 	}
 	
@@ -46,12 +51,14 @@ public class Tree<T>  {
 		Tree<String> tandem = new Tree<String>("tandem");
 		Tree<String> bike = new Tree<String>("bike");
 		Tree<String> buggy = new Tree<String>("buggy");
+		Tree<String> strandbuggy = new Tree<String>("strandbuggy");
 		Tree<String> wheeled_vehicle = new Tree<String>("wheeled vehicle");
 
 		wheeled_vehicle.children().add(bike);
 		wheeled_vehicle.children().add(buggy);
 		bike.children().add(tandem);
 		bike.children().add(ebike);
+		buggy.children().add(strandbuggy);
 		
 		wheeled_vehicle.dfs();
 	}

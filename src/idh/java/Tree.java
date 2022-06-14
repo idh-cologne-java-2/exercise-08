@@ -40,7 +40,7 @@ public class Tree<T>  {
 		}
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
-			child.dfs(depthSearch+q);
+			child.dfs(depthSearch+1);
 		
 		}
 	}

@@ -33,9 +33,15 @@ public class Tree<T>  {
 	
 	
 	public void dfs() {
+		dfs(0);
+	}
+	
+	public void dfs(int indent) {
+		for (int i = 0; i < indent; i++) 
+			System.out.print(' ');
 		System.out.println(this.value);
 		for (Tree<T> child : children) {
-			child.dfs();
+			child.dfs(indent+1);
 		}
 	}
 	

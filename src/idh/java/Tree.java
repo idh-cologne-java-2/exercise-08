@@ -6,9 +6,10 @@ import java.util.Set;
 
 public class Tree<T>  {
 
+	//Datentyp T mit einem Wert
 	T value;
 	Set<Tree<T>> children;
-	
+
 	public Tree(T value) {
 		this.value = value;
 		this.children = new HashSet<Tree<T>>();
@@ -18,7 +19,7 @@ public class Tree<T>  {
 		this.value = value;
 		this.children = new HashSet<Tree<T>>(children);
 	}
-		
+	
 	public T get() {
 		return value;
 	}
@@ -31,29 +32,37 @@ public class Tree<T>  {
 		return children;
 	}
 	
-	
-	public void dfs() {
-		System.out.println(this.value);
+	public void dfs(int index) {
+		StringBuilder st = new StringBuilder();
+		for(int i = 0; i < index; i++) {
+			st.append("  ");
+		}
+		st.append(this.value);
+		System.out.println(st);
+		
 		for (Tree<T> child : children) {
-			child.dfs();
+			child.dfs(index +1);
 		}
 	}
 	
 	
+	// Es werden die Elemente der Reihe nach ausgegeben, ein string builder wird erstellt um dann noch Leerzeichen zu erzeugen, durch das iterrieren kann der string
+	// builder leerzeichen einfügen
+	
 	public static void main(String[] args) {
-		
+
+		Tree<String> wheeled_vehicle = new Tree<String>("wheeled vehicle");
 		Tree<String> ebike = new Tree<String>("e-bike");
 		Tree<String> tandem = new Tree<String>("tandem");
 		Tree<String> bike = new Tree<String>("bike");
 		Tree<String> buggy = new Tree<String>("buggy");
-		Tree<String> wheeled_vehicle = new Tree<String>("wheeled vehicle");
+		
 
 		wheeled_vehicle.children().add(bike);
 		wheeled_vehicle.children().add(buggy);
 		bike.children().add(tandem);
 		bike.children().add(ebike);
-		
-		wheeled_vehicle.dfs();
+		wheeled_vehicle.dfs(0);
 	}
 
 }
